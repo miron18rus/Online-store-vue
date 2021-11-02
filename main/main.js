@@ -21,25 +21,10 @@ const app = new Vue ({
                     console.log(error);
                 })
         },
-       /*  addProduct(item) {
-            this.getJson(`${API}/addToBasket.json`)
-                .then(data => {
-                    if(data.result === 1) {
-                        let find = this.cartItems.find(el => el.id_product === item.id_product);
-                        if(find) {
-                            find.quantity++;
-                        } else {
-                            const prod = Object.assign({quantity: 1}, item);
-                            this.cartItems.push(prod)
-                        }
-                    }
-                })
-            } */
-
-            filter() {
-                const regexp = new RegExp(this.userSearch, 'i');
-                this.filtered = this.products.filter(el => regexp.test(el.product_name));
-            },
+        filter(){
+            let regexp = new RegExp(this.userSearch, 'i');
+            this.filtered = this.products.filter(el => regexp.test(el.product_name));
+        }
     },
     mounted() {
         this.getJson(`${API + this.cartUrl}`)
