@@ -11,7 +11,8 @@ const app = new Vue ({
         filtered: [],
         imgCart: 'https://via.placeholder.com/50x100',
         products: [],
-        imgCatalog: 'https://via.placeholder.com/200x150',
+        imgProduct: 'https://via.placeholder.com/200x150',
+        error: false
     },
     methods: {
         getJson(url){
@@ -30,6 +31,18 @@ const app = new Vue ({
                         } else {
                             const prod = Object.assign({quantity: 1}, item);
                             this.cartItems.push(prod)
+                        }
+                    }
+                })
+        },
+        remove(item){
+            this.getJson(`${API}/addToBasket.json`)
+                .then(data => {
+                    if (data.result === 1) {
+                        if(item.quantity>1){
+                            item.quantity--;
+                        } else {
+                            this.cartItems.splice(this.cartItems.indexOf(item), 1);
                         }
                     }
                 })
