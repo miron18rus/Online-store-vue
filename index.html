@@ -13,14 +13,13 @@
     <div id="app">
         <header class="header">
             <div class="cart">
-                <filter-item></filter-item>
-                <button class="btn-cart" type="button" @click="showCart = !showCart">Корзина</button>
-                <cart :cart-items="cartItems" :img="imgCart" :visibility="showCart">
-                </cart>
+                <filter_item></filter_item>
+                
+                <cart ref="cart"></cart>
             </div>
         </header>
         <main class="main">
-            <products :products="filtered" :img="imgProduct" @add-product="addProduct"></products>
+            <products ref="products"></products>
         </main>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
